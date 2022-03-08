@@ -1,0 +1,93 @@
+<template>
+    <lightning-card title="Search Books">
+        <div class="slds-var-p-around_medium lgc-bg">
+            <lightning-input type="search" onchange={handleKeyChange} class="slds-var-m-bottom_small" label="Search"
+                value={searchKey} placeholder="Search by Name , Author and ISBN number">
+            </lightning-input>
+            <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                <thead>
+                    <tr class="slds-text-title_caps">
+                        <th scope="col">
+                            <div class="slds-truncate" title="Name">Name</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="ISBN ">ISBN</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="AUTHOR">AUTHOR</div>
+                        </th>
+                        <th scope="col">
+                            <div class="slds-truncate" title="Available Copy">Available Copy</div>
+                        </th>
+
+                    </tr>
+                </thead>
+                <tbody>
+                    <template for:each={data} for:item="item" for:index="index">
+                        <tr key={item.Id} class="slds-hint-parent">
+                            <td>
+                                <div>
+                                    <a data-id={item.Id} onclick={openModal}> {item.Name}</a>
+
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {item.ISBN_Number__c}
+
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {item.Author__c}
+
+                                </div>
+                            </td>
+                            <td>
+                                <div>
+                                    {item.Number_of_Free_Books__c}
+
+                                </div>
+                            </td>
+                        </tr>
+                    </template>
+                </tbody>
+            </table>
+
+            <template if:true={showModal}>
+                <section aria-modal="true" class="slds-modal slds-fade-in-open">
+                    <div class="slds-modal__container ">
+                        <header class="slds-modal__header">
+                            <h2 class="slds-text-heading_small">Book Issue Details</h2>
+                            <lightning-icon class="slds-modal__close" icon-name="utility:close" size="small" onclick={closeModal}></lightning-icon>
+                        </header>
+                        <div class="slds-modal__content">
+                            <div class="slds-var-p-around_small">
+                                <c-book-modal  book-obj={book} ></c-book-modal>
+                            </div>
+                        </div>
+                        <footer class="slds-modal__footer">
+                            <lightning-button variant="brand" label="Cancel" onclick={closeModal} class="slds-p-around_x-small"></lightning-button>
+                        </footer>
+                    </div>
+                </section>
+                <div class="slds-backdrop slds-backdrop_open"></div>
+            </template>
+            </br>
+            <lightning-layout horizontal-align="space">
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Previous" icon-name="utility:chevronleft" onclick={previousHandler}>
+                    </lightning-button>
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    Page {page} of {totalPage}
+                </lightning-layout-item>
+                <lightning-layout-item flexibility="auto">
+                    <lightning-button label="Next" icon-name="utility:chevronright" icon-position="right"
+                        onclick={nextHandler}></lightning-button>
+                </lightning-layout-item>
+            </lightning-layout>
+        </div>
+    </lightning-card>
+
+</template>

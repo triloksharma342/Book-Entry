@@ -1,0 +1,79 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-p-around_medium lgc-bg">
+
+            <div style="height: 300px;">
+                <!-- sldsValidatorIgnoreNextLine -->
+
+
+                <table class="slds-table slds-table_bordered slds-table_cell-buffer">
+                    <thead>
+                        <tr class="slds-text-title_caps">
+                            
+                            <th scope="col">
+                                <div class="slds-truncate" title="Reader ">Reader</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Book Copy">Book Copy</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Date of return">Date of return</div>
+                            </th>
+                            <th scope="col">
+                                <div class="slds-truncate" title="Price">Price</div>
+                            </th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <template for:each={issuesData} for:item="item" for:index="index">
+                            <tr key={item.Id} class="slds-hint-parent">
+                                
+                                <td>
+                                    <div>
+                                        {item.Reader__r.Name}
+
+                                    </div>
+                                </td>
+                                <td>
+                                    <div>
+                                        {item.Book_C__r.Name}
+
+                                    </div>
+                                </td>
+                                <td>
+                                     <div>
+                                        {item.date_of_return__c}
+
+                                    </div>
+                                </td>
+                                <td > 
+                                    <div>
+                                        {item.Price__c}
+
+                                    </div>
+
+                                </td>
+                                
+                            </tr>
+                        </template>
+                    </tbody>
+                </table>
+
+
+            </div>
+        </div>
+
+        <h3> number of issued books are :  {numOfIssuedBooks} </h3> 
+
+        <template if:true={overdueB}>
+            <div style="height: 300px;">
+                <lightning-datatable
+                        key-field="id"
+                        data={overdueB}
+                        columns={columns}>
+                </lightning-datatable>
+            </div>  
+        </template>
+    </lightning-card>
+</template>

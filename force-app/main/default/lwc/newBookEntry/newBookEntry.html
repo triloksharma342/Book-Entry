@@ -1,0 +1,34 @@
+<template>
+    
+        <lightning-card title="New Book Entry">
+            <div class="slds-p-around_medium lgc-bg">
+                <lightning-record-edit-form object-api-name="Book__c"> 
+                    <lightning-input-field field-name="Name" value={Book.Name}> </lightning-input-field>
+                    <lightning-input-field field-name="ISBN_Number__c" value={isbnNumber} onchange={changeHandler} > </lightning-input-field>
+                    <lightning-input-field field-name="Price__c" value={Book.Price__c}> </lightning-input-field>
+                    <lightning-input-field field-name="Author__c" value={Book.Author__c}> </lightning-input-field>
+                    <lightning-input-field field-name="Number_of_Free_Books__c" value={Book.Number_of_Free_Books__c}> </lightning-input-field>
+<!-- 
+                    SELECT Id, OwnerId, IsDeleted, Name, CurrencyIsoCode, CreatedDate,
+                     CreatedById, LastModifiedDate, LastModifiedById, SystemModstamp,
+                      LastViewedDate, LastReferencedDate, ISBN_Number__c, Price__c, Author__c,
+                       Number_of_Books__c, Number_of_Free_Books__c FROM Book__c -->
+
+                       
+                    <lightning-button
+                        class="slds-m-top_small"
+                        variant="brand"
+                        type="submit"
+                        name="update"
+                        label="Update or Insert"
+                        onclick={updaterecords}
+                    >
+                    </lightning-button>
+                    <!-- <lightning-button-icon   alternative-text="Remove" title="Remove"
+                                name={index} data-id={index} accesskey={index} onclick={removeRow}></lightning-button-icon -->
+                </lightning-record-edit-form>          
+            </div>
+            
+        </lightning-card>
+ 
+</template>

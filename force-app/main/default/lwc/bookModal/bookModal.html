@@ -1,0 +1,25 @@
+<template>
+    <lightning-card>
+        <div class="slds-var-p-around_medium lgc-bg">
+            <template if:false={showIssue}>
+                <div>
+                    Number of free books : {numberOfFreeBooks}
+                </div>
+
+                <div style="height: 300px;">
+                    <!-- sldsValidatorIgnoreNextLine -->
+                    <lightning-datatable key-field="id" data={issues}
+                     columns={columns} 
+                     hide-checkbox-column="true"
+                        onrowaction={callRowAction}>
+                    </lightning-datatable>
+                </div>
+
+
+            </template>
+            <template if:true={showIssue}>
+                <c-issue-book bc-id={BCID}></c-issue-book>
+            </template>
+        </div>
+    </lightning-card>
+</template>

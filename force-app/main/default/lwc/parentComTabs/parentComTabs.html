@@ -1,0 +1,24 @@
+<template>
+    <lightning-card>
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-tabset>
+
+                <lightning-tab label="Search book" title="2nd tab extended title">
+                    <c-search-books> </c-search-books>
+                </lightning-tab>
+                <lightning-tab label="Add book ">
+                    <c-new-book-entry></c-new-book-entry>
+                </lightning-tab>
+                <lightning-tab label="Issue Book">
+                    <c-issue-book></c-issue-book>
+                </lightning-tab>
+                <lightning-tab label="Book Info">
+                    <c-issued-books></c-issued-books>
+                </lightning-tab>
+                <lightning-tab label="Show Readers">
+                    <c-show-readers></c-show-readers>
+                </lightning-tab>
+            </lightning-tabset>
+        </div>
+    </lightning-card>
+</template>
