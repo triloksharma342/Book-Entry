@@ -1,0 +1,15 @@
+<template>
+    <lightning-card title="New Book Issue">
+        <div class="slds-p-around_medium lgc-bg">
+            <lightning-record-edit-form object-api-name={issueObj}
+                onsuccess={handleIssueCreated}>
+                <lightning-input-field field-name="Book_C__c" value={bcId}></lightning-input-field>         
+                <lightning-input-field field-name="Reader__c" value={readerId}></lightning-input-field>         
+                <lightning-input-field field-name="date_of_return__c" value={dateOfReturnn}></lightning-input-field>         
+                <lightning-button variant="brand" label="submit" type="submit" class="slds-m-left_x-small"></lightning-button>
+
+            </lightning-record-edit-form>
+        </div>
+    </lightning-card>
+
+</template>
